@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Detail - BookRoomLibrary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #F5F5F5;
+      margin: 0;
+      color: #212121;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: white;
+      padding: 16px 32px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #2E7D32;
+      margin: 0;
+    }
+    .user-info {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .user-info a {
+      color: #1976D2;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .user-info a:hover {
+      text-decoration: underline;
+    }
+    .btn-header {
+      background-color: transparent;
+      color: #1976D2;
+      padding: 8px 16px;
+      border: 1px solid #1976D2;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn-header:hover {
+      background-color: #E3F2FD;
+    }
+    .btn-header.active {
+      background-color: #2E7D32;
+      color: white;
+      border-color: #2E7D32;
+    }
+    main {
+      flex: 1;
+      padding: 32px;
+    }
+    .language-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .lang-btn {
+      background-color: #1976D2;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin: 0 5px;
+    }
+    .lang-btn:hover {
+      background-color: #1565C0;
+    }
+    .lang-btn.active {
+      background-color: #2E7D32;
+    }
+    .news-detail {
+      background-color: white;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .news-detail h3 {
+      font-size: 16px;
+      color: #212121;
+      margin: 0 0 8px;
+    }
+    .news-detail .date {
+      font-size: 14px;
+      color: #757575;
+      margin: 0 0 8px;
+    }
+    .news-detail .summary {
+      font-size: 14px;
+      color: #757575;
+      margin: 0 0 12px;
+    }
+    .news-detail .description {
+      font-size: 14px;
+      color: #757575;
+      margin: 0;
+      line-height: 1.5;
+    }
+    footer {
+      background-color: #212121;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+    footer p {
+      margin: 4px 0;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 16px;
+      }
+      header {
+        padding: 12px 16px;
+        flex-direction: column;
+        gap: 8px;
+      }
+      header h1 {
+        font-size: 20px;
+      }
+      .user-info {
+        gap: 12px;
+      }
+      .lang-btn, .btn-header {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+      .news-detail h3 {
+        font-size: 14px;
+      }
+      .news-detail .date, .news-detail .summary, .news-detail .description {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BookRoomLibrary</h1>
+    <div class="user-info">
+      <a href="profile.html">Viethdqhe170021</a>
+      <button class="btn-header" onclick="window.location.href='index.html'">Home</button>
+      <button class="btn-header active" onclick="window.location.href='news.html'">News</button>
+      <button class="btn-header" onclick="window.location.href='policy.html'">Policy</button>
+      <button class="btn-header" onclick="logout()">Logout</button>
+    </div>
+  </header>
+  <main>
+    <div class="language-toggle">
+      <button class="lang-btn active" onclick="changeLanguage('en')">English</button>
+      <button class="lang-btn" onclick="changeLanguage('vi')">Tiếng Việt</button>
+    </div>
+    <div class="news-detail" id="newsDetail">
+      <h3 id="newsTitle">Library Maintenance Scheduled</h3>
+      <p class="date" id="newsDate">May 17, 2025</p>
+      <p class="summary" id="newsSummary">Room 1 will be closed for maintenance on May 20, 2025, from 8:00 AM to 12:00 PM.</p>
+      <p class="description" id="newsDescription">
+        The maintenance is to upgrade Room 1’s lighting and air conditioning systems to improve user comfort. 
+        During this period, users are encouraged to book Room 2 or Room 3, which will remain fully operational. 
+        Please plan your bookings accordingly and contact support at bookroomlibrary@gmail.edu.vn for assistance.
+      </p>
+    </div>
+  </main>
+  <footer>
+    <p>BookRoomLibrary</p>
+    <p>Email: bookroomlibrary@gmail.edu.vn</p>
+    <p>Phone: 09123456789</p>
+  </footer>
+  <script>
+    const newsContent = {
+      en: {
+        title: "Library Maintenance Scheduled",
+        date: "May 17, 2025",
+        summary: "Room 1 will be closed for maintenance on May 20, 2025, from 8:00 AM to 12:00 PM.",
+        description: `
+          The maintenance is to upgrade Room 1’s lighting and air conditioning systems to improve user comfort. 
+          During this period, users are encouraged to book Room 2 or Room 3, which will remain fully operational. 
+          Please plan your bookings accordingly and contact support at bookroomlibrary@gmail.edu.vn for assistance.
+        `
+      },
+      vi: {
+        title: "Lịch bảo trì thư viện",
+        date: "17 tháng 5, 2025",
+        summary: "Phòng 1 sẽ đóng cửa để bảo trì vào ngày 20 tháng 5, 2025, từ 8:00 sáng đến 12:00 trưa.",
+        description: `
+          Việc bảo trì nhằm nâng cấp hệ thống chiếu sáng và điều hòa không khí của Phòng 1 để cải thiện sự thoải mái cho người dùng. 
+          Trong thời gian này, người dùng được khuyến khích đặt Phòng 2 hoặc Phòng 3, vốn sẽ vẫn hoạt động bình thường. 
+          Vui lòng lên kế hoạch đặt phòng phù hợp và liên hệ hỗ trợ tại bookroomlibrary@gmail.edu.vn nếu cần giúp đỡ.
+        `
+      }
+    };
+
+    function renderNews(lang) {
+      document.getElementById('newsTitle').textContent = newsContent[lang].title;
+      document.getElementById('newsDate').textContent = newsContent[lang].date;
+      document.getElementById('newsSummary').textContent = newsContent[lang].summary;
+      document.getElementById('newsDescription').textContent = newsContent[lang].description;
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+    }
+
+    function changeLanguage(lang) {
+      renderNews(lang);
+    }
+
+    function logout() {
+      alert('Logged out successfully.');
+      window.location.href = 'login.html';
+    }
+
+    // Initial render
+    renderNews('en');
+  </script>
+</body>
+</html>

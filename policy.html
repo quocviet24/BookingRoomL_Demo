@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policies - BookRoomLibrary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #F5F5F5;
+      margin: 0;
+      color: #212121;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: white;
+      padding: 16px 32px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #2E7D32;
+      margin: 0;
+    }
+    .user-info {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .user-info a {
+      color: #1976D2;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .user-info a:hover {
+      text-decoration: underline;
+    }
+    .btn-header {
+      background-color: transparent;
+      color: #1976D2;
+      padding: 8px 16px;
+      border: 1px solid #1976D2;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn-header:hover {
+      background-color: #E3F2FD;
+    }
+    .btn-header.active {
+      background-color: #2E7D32;
+      color: white;
+      border-color: #2E7D32;
+    }
+    main {
+      flex: 1;
+      padding: 32px;
+    }
+    .language-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .lang-btn {
+      background-color: #1976D2;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin: 0 5px;
+    }
+    .lang-btn:hover {
+      background-color: #1565C0;
+    }
+    .lang-btn.active {
+      background-color: #2E7D32;
+    }
+    .policy-container {
+      background-color: white;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .policy-container h4 {
+      font-size: 16px;
+      color: #212121;
+      margin: 0 0 12px;
+    }
+    .policy-container p {
+      font-size: 14px;
+      color: #757575;
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+    .policy-container strong {
+      color: #212121;
+      font-weight: 700;
+    }
+    footer {
+      background-color: #212121;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+    footer p {
+      margin: 4px 0;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 16px;
+      }
+      header {
+        padding: 12px 16px;
+        flex-direction: column;
+        gap: 8px;
+      }
+      header h1 {
+        font-size: 20px;
+      }
+      .user-info {
+        gap: 12px;
+      }
+      .lang-btn, .btn-header {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+      .policy-container h4 {
+        font-size: 14px;
+      }
+      .policy-container p {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BookRoomLibrary</h1>
+    <div class="user-info">
+      <a href="profile.html">Viethdqhe170021</a>
+      <button class="btn-header" onclick="window.location.href='index.html'">Home</button>
+      <button class="btn-header" onclick="window.location.href='news.html'">News</button>
+      <button class="btn-header active" onclick="window.location.href='policy.html'">Policy</button>
+      <button class="btn-header" onclick="logout()">Logout</button>
+    </div>
+  </header>
+  <main>
+    <div class="language-toggle">
+      <button class="lang-btn active" onclick="changeLanguage('en')">English</button>
+      <button class="lang-btn" onclick="changeLanguage('vi')">Tiếng Việt</button>
+    </div>
+    <div class="policy-container" id="policyContainer">
+      <h4>Library Policies</h4>
+      <div id="policyList">
+        <p>(1) Users may book rooms for a maximum of <strong>2 hours</strong> per session to allow equitable access.</p>
+        <p>(2) Bookings must be canceled at least <strong>1 hour</strong> prior to the start time to free up slots for others.</p>
+        <p>(3) Users are required to check in within <strong>15 minutes</strong> of their booking start time, or the reservation may be forfeited.</p>
+        <p>(4) Rooms are available for booking daily from <strong>8:00 AM to 5:00 PM</strong>, with no bookings permitted outside these hours.</p>
+        <p>(5) Repeated no-shows may lead to <strong>temporary booking restrictions</strong> to maintain system integrity.</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>BookRoomLibrary</p>
+    <p>Email: bookroomlibrary@gmail.edu.vn</p>
+    <p>Phone: 09123456789</p>
+  </footer>
+  <script>
+    const policyTexts = {
+      en: [
+        "(1) Users may book rooms for a maximum of <strong>2 hours</strong> per session to allow equitable access.",
+        "(2) Bookings must be canceled at least <strong>1 hour</strong> prior to the start time to free up slots for others.",
+        "(3) Users are required to check in within <strong>15 minutes</strong> of their booking start time, or the reservation may be forfeited.",
+        "(4) Rooms are available for booking daily from <strong>8:00 AM to 5:00 PM</strong>, with no bookings permitted outside these hours.",
+        "(5) Repeated no-shows may lead to <strong>temporary booking restrictions</strong> to maintain system integrity."
+      ],
+      vi: [
+        "(1) Người dùng có thể đặt phòng tối đa <strong>2 giờ</strong> mỗi phiên để đảm bảo quyền truy cập công bằng.",
+        "(2) Việc hủy đặt phòng phải được thực hiện ít nhất <strong>1 giờ</strong> trước giờ bắt đầu để nhường chỗ cho người khác.",
+        "(3) Người dùng cần check-in trong vòng <strong>15 phút</strong> kể từ giờ bắt đầu đặt phòng, nếu không, đặt phòng có thể bị hủy.",
+        "(4) Phòng có sẵn để đặt hàng ngày từ <strong>8:00 sáng đến 5:00 chiều</strong>, không cho phép đặt ngoài khung giờ này.",
+        "(5) Việc không đến nhiều lần có thể dẫn đến <strong>hạn chế đặt phòng tạm thời</strong> để duy trì tính toàn vẹn của hệ thống."
+      ]
+    };
+
+    function renderPolicies(lang) {
+      const policyList = document.getElementById('policyList');
+      policyList.innerHTML = '';
+      policyTexts[lang].forEach(text => {
+        const policyItem = document.createElement('p');
+        policyItem.innerHTML = text;
+        policyList.appendChild(policyItem);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+    }
+
+    function changeLanguage(lang) {
+      renderPolicies(lang);
+    }
+
+    function logout() {
+      alert('Logged out successfully.');
+      window.location.href = 'login.html';
+    }
+
+    // Initial render
+    renderPolicies('en');
+  </script>
+</body>
+</html>
