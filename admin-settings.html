@@ -59,6 +59,11 @@
     .btn-header:hover {
       background-color: #E3F2FD;
     }
+    .btn-header.active {
+      color: #2E7D32;
+      border-color: #2E7D32;
+      font-weight: 700;
+    }
     main {
       flex: 1;
       padding: 16px 32px;
@@ -225,9 +230,11 @@
     <h1>BookRoomLibrary</h1>
     <div class="user-info">
       <a href="admin-profile.html">Admin</a>
-      <button class="btn-header" onclick="window.location.href='admin_dashboard.html'">Dashboard</button>
+      <button class="btn-header" onclick="window.location.href='admin-dashboard-daily.html'">Dashboard</button>
       <button class="btn-header" onclick="window.location.href='manage-rooms.html'">Manage Rooms</button>
       <button class="btn-header" onclick="window.location.href='manage-news.html'">Manage News</button>
+      <button class="btn-header" onclick="window.location.href='manage-reports.html'">Manage Reports</button>
+      <button class="btn-header" onclick="window.location.href='manage-reviews.html'">Manage Reviews</button>
       <button class="btn-header active" onclick="window.location.href='admin-settings.html'">Settings</button>
       <button class="btn-header" onclick="window.location.href='login.html'">Logout</button>
     </div>
