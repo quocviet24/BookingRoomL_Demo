@@ -165,7 +165,7 @@
     tr:hover {
       background-color: #E3F2FD;
     }
-    .btn-edit, .btn-delete {
+    .btn-edit, .btn-toggle {
       padding: 6px 12px;
       border: none;
       border-radius: 4px;
@@ -180,11 +180,19 @@
     .btn-edit:hover {
       background-color: #2196F3;
     }
-    .btn-delete {
-      background-color: #D32F2F;
+    .btn-toggle {
       color: white;
     }
-    .btn-delete:hover {
+    .btn-toggle.active {
+      background-color: #4CAF50;
+    }
+    .btn-toggle.active:hover {
+      background-color: #66BB6A;
+    }
+    .btn-toggle.deactive {
+      background-color: #D32F2F;
+    }
+    .btn-toggle.deactive:hover {
       background-color: #EF5350;
     }
     .pagination {
@@ -263,7 +271,7 @@
       .pagination a {
         padding: 6px 10px;
       }
-      .btn-add, .btn-edit, .btn-delete {
+      .btn-add, .btn-edit, .btn-toggle {
         font-size: 12px;
         padding: 4px 8px;
       }
@@ -320,7 +328,7 @@
             <td>Available</td>
             <td>
               <a href="edit-room-1.html" class="btn-edit">Edit</a>
-              <a href="delete-room-1.html" class="btn-delete">Delete</a>
+              <a href="toggle-room-1.html" class="btn-toggle deactive">Deactive</a>
             </td>
           </tr>
           <tr>
@@ -330,7 +338,7 @@
             <td>Unavailable</td>
             <td>
               <a href="edit-room-2.html" class="btn-edit">Edit</a>
-              <a href="delete-room-2.html" class="btn-delete">Delete</a>
+              <a href="toggle-room-2.html" class="btn-toggle active">Active</a>
             </td>
           </tr>
           <tr>
@@ -340,7 +348,7 @@
             <td>Available</td>
             <td>
               <a href="edit-room-3.html" class="btn-edit">Edit</a>
-              <a href="delete-room-3.html" class="btn-delete">Delete</a>
+              <a href="toggle-room-3.html" class="btn-toggle deactive">Deactive</a>
             </td>
           </tr>
         </tbody>
